@@ -1,0 +1,81 @@
+//
+//  test.pch
+//  test
+//
+//  Created by 张看看 on 15/10/20.
+//  Copyright © 2015年 张杰华. All rights reserved.
+//
+
+#ifndef test_pch
+#define test_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+/* Base IP */
+#define  MAHttpBaseURL @"http://118.28.46.10"
+
+/* iOS 系统版本 */
+#define IOS7    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+#define IOS7_N  ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7 && [[[UIDevice currentDevice] systemVersion] floatValue] < 8)
+#define IOS8    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8)
+
+/* iOS 设备 */
+#define iPhone4        (UI_Screen_Width_Normal == 320 && UI_Screen_Height_Normal == 480)
+#define iPhone5        (UI_Screen_Width_Normal == 320 && UI_Screen_Height_Normal > 480 && UI_Screen_Height_Normal <= 568)
+#define iPhone6        (UI_Screen_Width_Normal == 375)
+#define iPhone6Plus    (UI_Screen_Width_Normal == 414)
+
+#define UI_Screen_Width       (IOS8? [[UIScreen mainScreen] bounds].size.height: [[UIScreen mainScreen] bounds].size.width)
+#define UI_Screen_Height      (IOS8? [[UIScreen mainScreen] bounds].size.width: [[UIScreen mainScreen] bounds].size.height)
+#define UI_Screen_Width_Normal  [[UIScreen mainScreen] bounds].size.width
+#define UI_Screen_Height_Normal [[UIScreen mainScreen] bounds].size.height
+
+/* Font */
+#define D_FONT(s)       [UIFont fontWithName:@"Helvetica-Light" size:s]
+#define D_FONT_M(s)     [UIFont fontWithName:@"Optima-Bold" size:s]
+#define D_FONT_P(s)     [UIFont fontWithName:@"Avenir-Heavy" size:s]
+
+/* judge null NSString */
+#define STRING_NULL(str)    (!str || [@"" isEqualToString:str])
+
+/* Color */
+#define RGBCOLOR(r,g,b)     [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBACOLOR(r,g,b,a)  [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f \alpha:(a)]
+#define CRGB(r, g, b)       [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+#define CRGBA(r, g, b, a)   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a/255.0f]
+#define ANY_COLOR CRGBA(arc4random() % 255, arc4random() % 255, arc4random() % 255, arc4random() % 255)
+#define ANY_COLOR_ALPHA(alpha) CRGBA(arc4random() % 255, arc4random() % 255, arc4random() % 255, alpha)
+#define RGBCOLORHEX(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define GETRED(rgbValue) (strtoul([[rgbValue substringWithRange:NSMakeRange(0, 2)] UTF8String], 0, 16))
+#define GETGREEN(rgbValue) (strtoul([[rgbValue substringWithRange:NSMakeRange(2, 2)] UTF8String], 0, 16))
+#define GETBLUE(rgbValue) (strtoul([[rgbValue substringWithRange:NSMakeRange(4, 2)] UTF8String],0,16))
+
+
+#define D_RED_COLOR CRGB(254, 100, 85)
+#define D_LIGHT_GRAY_COLOR CRGB(169, 169, 169)
+
+#define D_BLACK_COLOR CRGB(64, 47, 50)
+#define D_AZURE_COLOR CRGB(37, 158, 235)
+
+
+#define D_TXT_PLACEHOLDER_COLOR CRGB(169, 169, 169)
+#define D_BTN_NORMAL_COLOR CRGB(1, 152, 117)
+#define D_BTN_HIGHLITED_COLOR CRGB(128, 203, 186)
+
+#define D_TXT_BACKGROUND_COLOR CRGB (229, 233, 235)
+#define D_TXT_BORDER_BLACK_COLOR CRGB (182, 182, 182)
+#define D_TXT_BORDER_BLUE_COLOR CRGB (37, 158, 235)
+#define D_TXT_BORDER_RED_COLOR CRGB (254, 100, 85)
+
+/* Notification */
+#define NSNOTIFICATION_ACCEPT_NOTICE_SEL(notice, sel) [[NSNotificationCenter defaultCenter] addObserver:self selector:sel name:notice object:nil]
+
+#define NSNOTIFICATION_POST_NOTICE(notice) [[NSNotificationCenter defaultCenter] postNotificationName:notice object:nil]
+#define NSNOTIFICATION_POST_NOTICE_OBJECT(notice, obj) [[NSNotificationCenter defaultCenter] postNotificationName:notice object:obj]
+
+#define NSNOTIFICATION_REMOVE_SELF_NOTICE   [[NSNotificationCenter defaultCenter] removeObserver:self]
+#define NSNOTIFICATION_REMOVE_SELF_NOTICE_NAME(notifactionName)   [[NSNotificationCenter defaultCenter] removeObserver:self name:notifactionName object:nil]
+
+
+#endif /* test_pch */
