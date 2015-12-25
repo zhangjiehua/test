@@ -22,6 +22,8 @@
 
 
 #import "SZTextView.h"
+#import "UHATextEntity.h"
+#import "UHAImageTableViewCell.h"
 
 @protocol ACEExpandableTableViewDelegate <UITableViewDelegate, UITextViewDelegate>
 
@@ -39,13 +41,19 @@
 
 @interface ACEExpandableTextCell : UITableViewCell
 
-@property (nonatomic, strong) UIView *myView;
-@property (nonatomic, weak) UITableView *expandableTableView;
+@property (nonatomic, strong) UIView      *myView;
+@property (nonatomic, weak)   UITableView *expandableTableView;
 @property (nonatomic, strong, readonly) SZTextView *textView;
 
-@property (nonatomic, readonly) CGFloat cellHeight;
-@property (nonatomic, strong) NSString *text;
+@property (nonatomic, readonly) CGFloat    cellHeight;
+@property (nonatomic, strong)   NSString   *text;
 
+@property (nonatomic,strong) UHATextEntity *entity;
+
+//@property (nonatomic,assign) id<UHATableViewCellDelegate> delegate;
+
+
+- (void)updateWithData:(UHATextEntity*)entity;
 -(void)updateTextViewHeight; // Call to update the textView height (useful for viewdidload)
 
 @end

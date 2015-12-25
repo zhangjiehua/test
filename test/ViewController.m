@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "UHACollectionView.h"
+#import "ONECollectionView.h"
 #import "UHATableView.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UHACollectionView *collectionView;
+@property (nonatomic, strong) ONECollectionView *collectionView;
 @property (nonatomic, strong) UHATableView      *tableView;
 
 @end
@@ -26,7 +26,7 @@
     self.view.backgroundColor = UIColor.clearColor;
     self.navigationController.navigationBar.barTintColor = UIColor.blueColor;
 
-    [self configTableView];
+    [self configCollectionView];
 }
 
 - (void)configTableView {
@@ -40,7 +40,7 @@
 - (void)configCollectionView {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    self.collectionView = [[UHACollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
+    self.collectionView = [[ONECollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
     [self.view addSubview:self.collectionView];
 }
 

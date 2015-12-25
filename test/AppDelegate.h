@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  test
+//  SDWebImage Demo
 //
-//  Created by 张看看 on 15/10/8.
-//  Copyright (c) 2015年 张杰华. All rights reserved.
+//  Created by Olivier Poitrey on 09/05/12.
+//  Copyright (c) 2012 Dailymotion. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) UINavigationController *navigationController;
 
 @end
-

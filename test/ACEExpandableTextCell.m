@@ -60,7 +60,7 @@
         cellFrame.origin.y += kPadding;
         cellFrame.size.height -= kPadding;
         
-        _textView = [[SZTextView alloc] initWithFrame:cellFrame];
+        _textView = [[SZTextView alloc] initWithFrame:CGRectMake(10, 0, cellFrame.size.width-20, cellFrame.size.height)];
         _textView.delegate = self;
         
         _textView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -71,6 +71,8 @@
         _textView.showsVerticalScrollIndicator = NO;
         _textView.showsHorizontalScrollIndicator = NO;
         // textView.contentInset = UIEdgeInsetsZero;
+        _textView.layer.borderColor = UIColor.clearColor.CGColor;
+        _textView.layer.borderWidth = 3;
     }
     return _textView;
 }
@@ -86,8 +88,7 @@
                afterDelay:0.1];
 }
 
-- (CGFloat)cellHeight
-{
+- (CGFloat)cellHeight {
     return [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, FLT_MAX)].height + kPadding * 2;
 }
 
@@ -97,7 +98,7 @@
 
 #pragma mark - Text View Delegate
 
--(void)textViewDidEndEditing:(UITextView *)textView{
+-(void)textViewDidEndEditing:(UITextView *)textView {
     if ([self.expandableTableView.delegate respondsToSelector:@selector(tableView:textViewDidEndEditing:)]) {
         [(id<ACEExpandableTableViewDelegate>)self.expandableTableView.delegate tableView:self.expandableTableView textViewDidEndEditing:self.textView];
     }
@@ -169,7 +170,24 @@
     }
 }
 
+- (void)updateWithData:(UHATextEntity *)entity {
+    self.entity = entity;
+    self.textView.text = entity.text;
+    self.textView.placeholder = @"请输入文字";
+    self.textView.layer.borderColor = UIColor.clearColor.CGColor;
+    self.textView.textAlignment = kCTLeftTextAlignment;
+}
+
+#pragma mark - ButtonAction
+- (void)deleteCurentEntity:(id)sender {
+    if (self.expandableTableView.delegate && [self.expandableTableView.delegate respondsToSelector:@selector(respondsToDeleteUHATableViewCell:)]) {
+        [(id<UHATableViewCellDelegate>)self.expandableTableView.delegate respondsToDeleteUHATableViewCell:self.entity];
+    }
+}
+
 @end
+
+
 
 #pragma mark -
 

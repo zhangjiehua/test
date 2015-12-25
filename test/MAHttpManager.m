@@ -10,7 +10,7 @@
 
 @implementation MAHttpManager
 
--(instancetype)initWithBaseUrl:(NSString *)basicUrl{
+-(instancetype)initWithBaseUrl:(NSString *)basicUrl {
     _pBasicUrl=basicUrl;
     _pHttpManager=[AFHTTPRequestOperationManager manager];
     return self;

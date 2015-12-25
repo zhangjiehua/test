@@ -50,6 +50,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         __weak typeof(self) weakSelf = self;
+        self.textView.layer.borderColor = UIColor.blueColor.CGColor;
+        self.textView.layer.borderWidth = 3;
         [self.contentView addSubview:self.textView];
         self.myView = [UIView new];
         [self.contentView addSubview:self.myView];

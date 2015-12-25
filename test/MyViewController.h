@@ -10,6 +10,6 @@
 
 @interface MyViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *cellData;
+//@property (nonatomic, strong) NSMutableArray *cellData;
 
 @end

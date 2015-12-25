@@ -12,9 +12,9 @@ IB_DESIGNABLE
 
 @interface SZTextView : UITextView
 
-@property (copy, nonatomic) IBInspectable NSString *placeholder;
+@property (nonatomic,copy)    IBInspectable NSString *placeholder;
 @property (nonatomic)  double IBInspectable fadeTime;
-@property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
-@property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic,copy)    NSAttributedString *attributedPlaceholder;
+@property (nonatomic,retain)  UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
 @end

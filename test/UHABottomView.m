@@ -12,25 +12,29 @@
 @implementation UHABottomView
 
 
-
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) {
         return nil;
     }
+    self.backgroundColor = UIColor.whiteColor;
+    UIView *lineView = [UIView new];
+    lineView.frame = CGRectMake(0, 0, UI_Screen_Width_Normal, 1);
+    lineView.backgroundColor = UIColor.grayColor;
+    [self addSubview:lineView];
+    
     __weak __typeof(self) weakSelf = self;
     self.takePhotoButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.takePhotoButton.backgroundColor = UIColor.redColor;
+    [self.takePhotoButton setImage:[UIImage imageNamed:@"富文本_按钮_拍照"] forState:UIControlStateNormal];
     [self addSubview:self.takePhotoButton];
     self.openAlbumButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.openAlbumButton.backgroundColor = UIColor.blueColor;
+    [self.openAlbumButton setImage:[UIImage imageNamed:@"富文本_按钮_相册"] forState:UIControlStateNormal];
     [self addSubview:self.openAlbumButton];
     self.addTextButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.addTextButton.backgroundColor = UIColor.greenColor;
+    [self.addTextButton setImage:[UIImage imageNamed:@"富文本_按钮_文本"] forState:UIControlStateNormal];
     [self addSubview:self.addTextButton];
     self.saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.saveButton.backgroundColor = UIColor.yellowColor;
+    [self.saveButton setImage:[UIImage imageNamed:@"富文本_按钮_保存"] forState:UIControlStateNormal];
     [self addSubview:self.saveButton];
     
     [self.takePhotoButton mas_makeConstraints:^(MASConstraintMaker *make) {
